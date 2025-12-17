@@ -1,35 +1,35 @@
 # Node.js Binding Benchmark Results (zeromq.js)
 
-**Date:** 2025-12-17 18:10:49
+**Date:** 2025-12-17 19:06:55
 **System:** Linux 6.6.87.2-microsoft-standard-WSL2
 **Architecture:** x86_64
 **Node.js Version:** v22.19.0
 
 ## Test Configuration
 
-- **Latency Rounds:** 10000
-- **Throughput Messages:** 1000000
+- **Latency Rounds:** 50000
+- **Throughput Messages:** 5000000
 - **Message Sizes:** 64 1500 65536 bytes
 
 ## Results
 
 >> Message Size: 64 bytes
 
-**Latency:** 85.689 us
+**Latency:** 62.603 us
 
-**Throughput:** 861377 msg/s (441.025 Mb/s)
+**Throughput:** 886540 msg/s (453.909 Mb/s)
 
 >> Message Size: 1500 bytes
 
-**Latency:** 90.930 us
+**Latency:** 74.879 us
 
-**Throughput:** 612412 msg/s (7348.940 Mb/s)
+**Throughput:** 654337 msg/s (7852.041 Mb/s)
 
 >> Message Size: 65536 bytes
 
-**Latency:** 110.702 us
+**Latency:** 79.194 us
 
-**Throughput:** 96482 msg/s (50584.258 Mb/s)
+**Throughput:** 113035 msg/s (59262.926 Mb/s)
 
 
 ## Comparison with C++ Baseline
@@ -48,22 +48,22 @@
 
 | Metric | C++ Baseline | Node.js | Difference | Performance |
 |--------|--------------|---------|------------|-------------|
-| **Latency** | 56.41 us | 85.689 us | 51.9% | slower |
-| **Throughput** | 5180000 msg/s | 861377 msg/s | -83.4% | slower |
+| **Latency** | 56.41 us | 62.603 us | 11.0% | slower |
+| **Throughput** | 5180000 msg/s | 886540 msg/s | -82.9% | slower |
 
 #### 1500-byte Messages
 
 | Metric | C++ Baseline | Node.js | Difference | Performance |
 |--------|--------------|---------|------------|-------------|
-| **Latency** | 53.85 us | 90.930 us | 68.9% | slower |
-| **Throughput** | 1170000 msg/s | 612412 msg/s | -47.7% | slower |
+| **Latency** | 53.85 us | 74.879 us | 39.1% | slower |
+| **Throughput** | 1170000 msg/s | 654337 msg/s | -44.1% | slower |
 
 #### 65536-byte Messages
 
 | Metric | C++ Baseline | Node.js | Difference | Performance |
 |--------|--------------|---------|------------|-------------|
-| **Latency** | 66.80 us | 110.702 us | 65.7% | slower |
-| **Throughput** | 111000 msg/s | 96482 msg/s | -13.1% | slower |
+| **Latency** | 66.80 us | 79.194 us | 18.6% | slower |
+| **Throughput** | 111000 msg/s | 113035 msg/s | 1.8% | FASTER ⚡ |
 
 
 ## Analysis

@@ -1,14 +1,14 @@
 # .NET Binding Benchmark Results (Net.Zmq)
 
-**Date:** 2025-12-17 18:57:08
+**Date:** 2025-12-17 19:05:21
 **System:** Linux 6.6.87.2-microsoft-standard-WSL2
 **Architecture:** x86_64
 **.NET Version:** 8.0.122
 
 ## Test Configuration
 
-- **Latency Rounds:** 10000
-- **Throughput Messages:** 1000000
+- **Latency Rounds:** 50000
+- **Throughput Messages:** 5000000
 - **Message Sizes:** 64 1500 65536 bytes
 
 ## Results
@@ -16,32 +16,32 @@
 ### Message Size: 64 bytes
 
 **Latency:**
-- Average: 71.4781 us
-- Message rate: 6995.14 msg/s
+- Average: 53.5224 us
+- Message rate: 9341.89 msg/s
 
 **Throughput:**
-- Messages/sec: 2.57975E+06 msg/s
-- Megabits/sec: 1320.8 Mb/s
+- Messages/sec: 2.61646E+06 msg/s
+- Megabits/sec: 1339.6 Mb/s
 
 ### Message Size: 1500 bytes
 
 **Latency:**
-- Average: 51.7270 us
-- Message rate: 9666.13 msg/s
+- Average: 60.3861 us
+- Message rate: 8280.05 msg/s
 
 **Throughput:**
-- Messages/sec: 1.06195E+06 msg/s
-- Megabits/sec: 12743.5 Mb/s
+- Messages/sec: 1.08925E+06 msg/s
+- Megabits/sec: 13070.9 Mb/s
 
 ### Message Size: 65536 bytes
 
 **Latency:**
-- Average: 72.3290 us
-- Message rate: 6912.86 msg/s
+- Average: 62.2341 us
+- Message rate: 8034.18 msg/s
 
 **Throughput:**
-- Messages/sec: 87773.2 msg/s
-- Megabits/sec: 46018.4 Mb/s
+- Messages/sec: 90639.3 msg/s
+- Megabits/sec: 47521.1 Mb/s
 
 
 ## Comparison with C++ Baseline

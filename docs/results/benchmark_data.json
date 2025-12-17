@@ -1,45 +1,50 @@
 {
+  "test_config": {
+    "latency_rounds": 50000,
+    "throughput_messages": 5000000,
+    "message_sizes": [64, 1500, 65536]
+  },
   "latency": {
     "C++": [
       {
         "size": 64,
-        "latency_us": 56.4056
+        "latency_us": 56.1268
       },
       {
         "size": 1500,
-        "latency_us": 53.8457
+        "latency_us": 55.5514
       },
       {
         "size": 65536,
-        "latency_us": 66.8024
+        "latency_us": 41.7129
       }
     ],
     ".NET": [
       {
         "size": 64,
-        "latency_us": 71.4781
+        "latency_us": 53.5224
       },
       {
         "size": 1500,
-        "latency_us": 51.7270
+        "latency_us": 60.3861
       },
       {
         "size": 65536,
-        "latency_us": 72.3290
+        "latency_us": 62.2341
       }
     ],
     "Node.js": [
       {
         "size": 64,
-        "latency_us": 85.689
+        "latency_us": 62.603
       },
       {
         "size": 1500,
-        "latency_us": 90.93
+        "latency_us": 74.879
       },
       {
         "size": 65536,
-        "latency_us": 110.702
+        "latency_us": 79.194
       }
     ]
   },
@@ -47,52 +52,52 @@
     "C++": [
       {
         "size": 64,
-        "msg_per_sec": 5184380.0,
-        "mbps": 2654.4
+        "msg_per_sec": 5299600.0,
+        "mbps": 2713.4
       },
       {
         "size": 1500,
-        "msg_per_sec": 1169640.0,
-        "mbps": 14035.7
+        "msg_per_sec": 1473030.0,
+        "mbps": 17676.4
       },
       {
         "size": 65536,
-        "msg_per_sec": 111149.0,
-        "mbps": 58274.1
+        "msg_per_sec": 93584.6,
+        "mbps": 49065.3
       }
     ],
     ".NET": [
       {
         "size": 64,
-        "msg_per_sec": 2579750.0,
-        "mbps": 1320.8
+        "msg_per_sec": 2616460.0,
+        "mbps": 1339.6
       },
       {
         "size": 1500,
-        "msg_per_sec": 1061950.0,
-        "mbps": 12743.5
+        "msg_per_sec": 1089250.0,
+        "mbps": 13070.9
       },
       {
         "size": 65536,
-        "msg_per_sec": 87773.2,
-        "mbps": 46018.4
+        "msg_per_sec": 90639.3,
+        "mbps": 47521.1
       }
     ],
     "Node.js": [
       {
         "size": 64,
-        "msg_per_sec": 861377.0,
-        "mbps": 441.025
+        "msg_per_sec": 886540.0,
+        "mbps": 453.909
       },
       {
         "size": 1500,
-        "msg_per_sec": 612412.0,
-        "mbps": 7348.94
+        "msg_per_sec": 654337.0,
+        "mbps": 7852.041
       },
       {
         "size": 65536,
-        "msg_per_sec": 96482.0,
-        "mbps": 50584.258
+        "msg_per_sec": 113035.0,
+        "mbps": 59262.926
       }
     ]
   }
