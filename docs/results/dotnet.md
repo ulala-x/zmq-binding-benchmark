@@ -1,6 +1,6 @@
 # .NET Binding Benchmark Results (Net.Zmq)
 
-**Date:** 2025-12-17 18:03:35
+**Date:** 2025-12-17 18:57:08
 **System:** Linux 6.6.87.2-microsoft-standard-WSL2
 **Architecture:** x86_64
 **.NET Version:** 8.0.122
@@ -16,73 +16,35 @@
 ### Message Size: 64 bytes
 
 **Latency:**
-- Average: 51.1379 us
-- Message rate: 9777.48 msg/s
+- Average: 71.4781 us
+- Message rate: 6995.14 msg/s
 
 **Throughput:**
-- Messages/sec: 4.90956E+06 msg/s
-- Megabits/sec: 2513.7 Mb/s
+- Messages/sec: 2.57975E+06 msg/s
+- Megabits/sec: 1320.8 Mb/s
 
 ### Message Size: 1500 bytes
 
 **Latency:**
-- Average: 51.7553 us
-- Message rate: 9660.85 msg/s
+- Average: 51.7270 us
+- Message rate: 9666.13 msg/s
 
 **Throughput:**
-- Messages/sec: 1.33628E+06 msg/s
-- Megabits/sec: 16035.3 Mb/s
+- Messages/sec: 1.06195E+06 msg/s
+- Megabits/sec: 12743.5 Mb/s
 
 ### Message Size: 65536 bytes
 
 **Latency:**
-- Average: 71.1798 us
-- Message rate: 7024.46 msg/s
+- Average: 72.3290 us
+- Message rate: 6912.86 msg/s
 
 **Throughput:**
-- Messages/sec: 75643 msg/s
-- Megabits/sec: 39658.7 Mb/s
+- Messages/sec: 87773.2 msg/s
+- Megabits/sec: 46018.4 Mb/s
 
 
 ## Comparison with C++ Baseline
-
-### 64-byte Messages
-
-| Metric | C++ Baseline | .NET (Net.Zmq) | Difference | Performance |
-|--------|--------------|----------------|------------|-------------|
-| **Latency** | 56.41 us | 51.14 us | -9.3% | **9.3% FASTER** ⚡ |
-| **Throughput** | 5.18M msg/s | 4.91M msg/s | -5.3% | 5.3% slower |
-
-### 1500-byte Messages
-
-| Metric | C++ Baseline | .NET (Net.Zmq) | Difference | Performance |
-|--------|--------------|----------------|------------|-------------|
-| **Latency** | 53.85 us | 51.76 us | -3.9% | **3.9% FASTER** ⚡ |
-| **Throughput** | 1.17M msg/s | 1.34M msg/s | +14.3% | **14.3% FASTER** ⚡ |
-
-### 65536-byte Messages
-
-| Metric | C++ Baseline | .NET (Net.Zmq) | Difference | Performance |
-|--------|--------------|----------------|------------|-------------|
-| **Latency** | 66.80 us | 71.18 us | +6.6% | 6.6% slower |
-| **Throughput** | 111K msg/s | 76K msg/s | -31.9% | 31.9% slower |
-
-### Analysis
-
-**Surprising Results:** The .NET implementation actually **outperforms** C++ in small and medium message sizes for latency and medium messages for throughput!
-
-**Possible Explanations:**
-
-1. **Net.Zmq Optimizations**: The Net.Zmq binding may have optimized P/Invoke marshaling for small messages
-2. **Zero-Copy Techniques**: Efficient memory handling that minimizes data copying
-3. **JIT Optimizations**: .NET's JIT compiler with tiered compilation produces highly optimized machine code
-4. **Measurement Variance**: System load and WSL2 virtualization may affect results
-5. **Different libzmq Versions**: The two bindings might use different libzmq implementations or versions
-
-**Large Message Performance**: The 32% throughput degradation for 65KB messages suggests:
-- Memory marshaling overhead becomes significant for large buffers
-- GC pressure from large allocations
-- This is expected and acceptable for most use cases
 
 
 ## Notes

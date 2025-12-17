@@ -60,7 +60,11 @@ public static class RemoteThr
             // Send messages
             for (int i = 0; i < messageCount; i++)
             {
-                socket.Send(buffer);
+                // Create and send message (matches C++ behavior)
+                using (var message = new Message(buffer))
+                {
+                    socket.Send(message, SendFlags.None);
+                }
 
                 // Progress indicator (every 10%)
                 if (messageCount > 100 && (i + 1) % (messageCount / 10) == 0)

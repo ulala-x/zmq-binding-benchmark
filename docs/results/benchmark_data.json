@@ -17,15 +17,15 @@
     ".NET": [
       {
         "size": 64,
-        "latency_us": 51.1379
+        "latency_us": 71.4781
       },
       {
         "size": 1500,
-        "latency_us": 51.7553
+        "latency_us": 51.7270
       },
       {
         "size": 65536,
-        "latency_us": 71.1798
+        "latency_us": 72.3290
       }
     ],
     "Node.js": [
@@ -64,18 +64,18 @@
     ".NET": [
       {
         "size": 64,
-        "msg_per_sec": 4909560.0,
-        "mbps": 2513.7
+        "msg_per_sec": 2579750.0,
+        "mbps": 1320.8
       },
       {
         "size": 1500,
-        "msg_per_sec": 1336280.0,
-        "mbps": 16035.3
+        "msg_per_sec": 1061950.0,
+        "mbps": 12743.5
       },
       {
         "size": 65536,
-        "msg_per_sec": 75643.0,
-        "mbps": 39658.7
+        "msg_per_sec": 87773.2,
+        "mbps": 46018.4
       }
     ],
     "Node.js": [

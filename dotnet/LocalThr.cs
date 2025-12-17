@@ -50,16 +50,16 @@ public static class LocalThr
             Console.WriteLine($"Message count: {messageCount}");
             Console.WriteLine("Waiting for messages...");
 
-            // Prepare receive buffer
-            byte[] buffer = new byte[messageSize];
-
             // Receive first message (warm-up, start timing after first message)
-            int firstMsgBytes = socket.Recv(buffer);
-
-            if (firstMsgBytes != messageSize)
+            using (var firstMsg = new Message())
             {
-                Console.Error.WriteLine($"Error: Message size mismatch. Expected {messageSize}, got {firstMsgBytes}");
-                return 1;
+                socket.Recv(firstMsg, RecvFlags.None);
+
+                if (firstMsg.Size != messageSize)
+                {
+                    Console.Error.WriteLine($"Error: Message size mismatch. Expected {messageSize}, got {firstMsg.Size}");
+                    return 1;
+                }
             }
 
             Console.WriteLine("First message received. Starting measurement...");
@@ -70,13 +70,16 @@ public static class LocalThr
             // Receive remaining messages
             for (int i = 1; i < messageCount; i++)
             {
-                int bytesReceived = socket.Recv(buffer);
-
-                // Verify message size
-                if (bytesReceived != messageSize)
+                using (var message = new Message())
                 {
-                    Console.Error.WriteLine($"Error: Message size mismatch at message {i}. Expected {messageSize}, got {bytesReceived}");
-                    return 1;
+                    socket.Recv(message, RecvFlags.None);
+
+                    // Verify message size
+                    if (message.Size != messageSize)
+                    {
+                        Console.Error.WriteLine($"Error: Message size mismatch at message {i}. Expected {messageSize}, got {message.Size}");
+                        return 1;
+                    }
                 }
 
                 // Progress indicator (every 10%)

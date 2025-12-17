@@ -53,11 +53,16 @@ public static class RemoteLat
             byte[] sendBuffer = new byte[messageSize];
             Array.Fill(sendBuffer, (byte)'X');
 
-            byte[] recvBuffer = new byte[messageSize];
-
             // Warm-up
-            socket.Send(sendBuffer);
-            socket.Recv(recvBuffer);
+            using (var warmupMsg = new Message(sendBuffer))
+            {
+                socket.Send(warmupMsg, SendFlags.None);
+            }
+
+            using (var warmupReply = new Message())
+            {
+                socket.Recv(warmupReply, RecvFlags.None);
+            }
 
             // Start timing
             var stopwatch = Stopwatch.StartNew();
@@ -65,17 +70,23 @@ public static class RemoteLat
             // Perform roundtrips
             for (int i = 0; i < roundtripCount; i++)
             {
-                // Send request
-                socket.Send(sendBuffer);
+                // Send request (create new message each iteration to match C++ behavior)
+                using (var request = new Message(sendBuffer))
+                {
+                    socket.Send(request, SendFlags.None);
+                }
 
                 // Receive reply
-                int bytesReceived = socket.Recv(recvBuffer);
-
-                // Verify message size
-                if (bytesReceived != messageSize)
+                using (var reply = new Message())
                 {
-                    Console.Error.WriteLine($"Error: Message size mismatch. Expected {messageSize}, got {bytesReceived}");
-                    return 1;
+                    socket.Recv(reply, RecvFlags.None);
+
+                    // Verify message size
+                    if (reply.Size != messageSize)
+                    {
+                        Console.Error.WriteLine($"Error: Message size mismatch. Expected {messageSize}, got {reply.Size}");
+                        return 1;
+                    }
                 }
             }
 

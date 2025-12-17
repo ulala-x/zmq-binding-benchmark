@@ -49,28 +49,31 @@ public static class LocalLat
             Console.WriteLine($"Roundtrip count: {roundtripCount}");
             Console.WriteLine("Waiting for messages...");
 
-            // Prepare receive buffer
-            byte[] buffer = new byte[messageSize];
-
             // Warm-up
-            int warmupBytes = socket.Recv(buffer);
-            socket.Send(buffer);
+            using (var warmupMsg = new Message())
+            {
+                socket.Recv(warmupMsg, RecvFlags.None);
+                socket.Send(warmupMsg, SendFlags.None);
+            }
 
             // Echo loop - receive and send back (roundtrip_count times)
             for (int i = 0; i < roundtripCount; i++)
             {
                 // Receive message
-                int bytesReceived = socket.Recv(buffer);
-
-                // Verify message size
-                if (bytesReceived != messageSize)
+                using (var message = new Message())
                 {
-                    Console.Error.WriteLine($"Error: Message size mismatch. Expected {messageSize}, got {bytesReceived}");
-                    return 1;
-                }
+                    socket.Recv(message, RecvFlags.None);
 
-                // Echo back (send the same message)
-                socket.Send(buffer);
+                    // Verify message size
+                    if (message.Size != messageSize)
+                    {
+                        Console.Error.WriteLine($"Error: Message size mismatch. Expected {messageSize}, got {message.Size}");
+                        return 1;
+                    }
+
+                    // Echo back (send the same message)
+                    socket.Send(message, SendFlags.None);
+                }
             }
 
             Console.WriteLine($"\nCompleted {roundtripCount} roundtrips.");
