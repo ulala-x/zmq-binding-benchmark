@@ -1,0 +1,6 @@
+[submodule "cpp/third-party/libzmq-native"]
+	path = cpp/third-party/libzmq-native
+	url = https://github.com/ulala-x/libzmq-native
+[submodule "cpp/third-party/cppzmq"]
+	path = cpp/third-party/cppzmq
+	url = https://github.com/zeromq/cppzmq
