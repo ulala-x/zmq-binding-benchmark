@@ -1,5 +1,13 @@
 # ZeroMQ Binding Performance Comparison
 
+## Performance Dashboard
+
+![Performance Dashboard](performance_dashboard.png)
+
+*Comprehensive performance comparison across all metrics. Click the image to view in full size.*
+
+---
+
 ## Summary
 
 **Baseline:** C++ (cppzmq)
