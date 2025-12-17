@@ -1,0 +1,99 @@
+{
+  "latency": {
+    "C++": [
+      {
+        "size": 64,
+        "latency_us": 56.4056
+      },
+      {
+        "size": 1500,
+        "latency_us": 53.8457
+      },
+      {
+        "size": 65536,
+        "latency_us": 66.8024
+      }
+    ],
+    ".NET": [
+      {
+        "size": 64,
+        "latency_us": 51.1379
+      },
+      {
+        "size": 1500,
+        "latency_us": 51.7553
+      },
+      {
+        "size": 65536,
+        "latency_us": 71.1798
+      }
+    ],
+    "Node.js": [
+      {
+        "size": 64,
+        "latency_us": 85.689
+      },
+      {
+        "size": 1500,
+        "latency_us": 90.93
+      },
+      {
+        "size": 65536,
+        "latency_us": 110.702
+      }
+    ]
+  },
+  "throughput": {
+    "C++": [
+      {
+        "size": 64,
+        "msg_per_sec": 5184380.0,
+        "mbps": 2654.4
+      },
+      {
+        "size": 1500,
+        "msg_per_sec": 1169640.0,
+        "mbps": 14035.7
+      },
+      {
+        "size": 65536,
+        "msg_per_sec": 111149.0,
+        "mbps": 58274.1
+      }
+    ],
+    ".NET": [
+      {
+        "size": 64,
+        "msg_per_sec": 4909560.0,
+        "mbps": 2513.7
+      },
+      {
+        "size": 1500,
+        "msg_per_sec": 1336280.0,
+        "mbps": 16035.3
+      },
+      {
+        "size": 65536,
+        "msg_per_sec": 75643.0,
+        "mbps": 39658.7
+      }
+    ],
+    "Node.js": [
+      {
+        "size": 64,
+        "msg_per_sec": 861377.0,
+        "mbps": 441.025
+      },
+      {
+        "size": 1500,
+        "msg_per_sec": 612412.0,
+        "mbps": 7348.94
+      },
+      {
+        "size": 65536,
+        "msg_per_sec": 96482.0,
+        "mbps": 50584.258
+      }
+    ]
+  }
+}

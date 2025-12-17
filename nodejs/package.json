@@ -1,0 +1,27 @@
+{
+  "name": "zmq-binding-benchmark-nodejs",
+  "version": "1.0.0",
+  "description": "ZeroMQ binding performance benchmark for Node.js",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Run ./run_benchmark.sh to execute all benchmarks\" && exit 0",
+    "local-lat": "node local-lat.js",
+    "remote-lat": "node remote-lat.js",
+    "local-thr": "node local-thr.js",
+    "remote-thr": "node remote-thr.js"
+  },
+  "keywords": [
+    "zeromq",
+    "benchmark",
+    "performance",
+    "zmq"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "zeromq": "^6.0.0"
+  }
+}
